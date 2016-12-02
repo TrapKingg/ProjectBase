@@ -1,0 +1,7 @@
+{% extends 'registration/base.html' %}
+{% block title %}Logged Out{% endblock title %}
+
+{% blokc content %}
+<h1>Salir</h1>
+<p>Has cerrado sesión exitosamente. Puedes <a href="{% url 'login' %}">Entrar Otra Vez</a>.</p>
+{% endblock content %}

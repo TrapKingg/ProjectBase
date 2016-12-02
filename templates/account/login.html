@@ -1,0 +1,20 @@
+{% extends 'account/base.html' %}
+{% block head %}
+{% block title %}Entrar{% endblock title %}
+
+{% endblock head %}
+{% block content %}
+     <div class="modal-dialog" id="modal">
+         <div class="loginmodal-container">
+             <h1>Entra en tu cuenta</h1><br>
+             <form method="post" accept-charset="UTF-8" action=".">
+                {% csrf_token %}
+                 {{ form.as_p }}
+                 <input type="submit" value="Entrar" class="btn btn-primary">
+             </form>
+             <div class="login-help">
+                 <a href="#">Register</a> - <a href="#">Forgot Password</a>
+             </div>
+         </div>
+     </div>
+{% endblock content %}

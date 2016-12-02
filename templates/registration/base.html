@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{% endblock title %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'account/css/navbar.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'account/css/general.css' %}">
+    <link rel="stylesheet" href="{% static 'account/css/login.css' %}">
+</head>
+<body>
+<!-- nav -->
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{% url 'login' %}">Lissandra</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right nav-pills">
+                    <li class="hidden">
+                        <a href=""></a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                      <li {% if section == 'dashboard' %}class="active"{% endif %} >
+                        <a href="{% url 'dashboard' %}">Dashboard</a>
+                      </li>
+                      <li {% if section == 'images' %}class="active"{% endif %} >
+                        <a href="">Imagenes</a>
+                      </li>
+                      <li {% if section == 'personas' %}class="active"{% endif %} >
+                        <a href="">Personas</a>
+                      </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li id="list-black">
+                                <a href="" id="list-black"><i class="fa fa-user-circle fa-lg"></i> Mi Perfil</a>
+                            </li>
+                            <li id="list-black">
+                                <a href="{% url 'logout' %}" id="list-black"><i class="fa fa-sign-out fa-lg"></i> Cerrar Sesión</a>
+                            </li>
+                            <li id="list-black">
+                                <a href="{% url 'password_change' %}" id="list-black"><i class="fa fa-lock fa-lg"></i> Cambiar Contraseña</a>
+                            </li>
+                          </ul>
+                    {% else %}
+                    <li class="">
+                        <a href="{% url 'register' %}"><i class="fa fa-user-plus fa-lg"></i> Registrate</a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'login' %}"> <i class="fa fa-sign-in fa-lg"></i> Entrar</a>
+                    </li>
+                    <li class="">
+                        <a href="" id="contacto"><i class="fa fa-support fa-lg"></i> Contacto</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+<!-- /nav -->
+{% block content %}
+
+{% endblock content %}
+</body>
+{% block js %}
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+{% endblock js %}
+</html>

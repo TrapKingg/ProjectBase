@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Aref+Ruqaa');
+
+.navbar-brand{
+    font-family: 'Aref Ruqaa', serif;
+}
+body{
+    background-color: #2ec997;
+}
+#mainNav{
+    padding-bottom: 10px;
+}
+#form-errors{
+    margin-top: 100px;
+}
+#container{
+  margin-top: 100px;
+}
+#list-black{
+  color: #222;
+}
+.pwd{
+  margin-top: 120px;
+}

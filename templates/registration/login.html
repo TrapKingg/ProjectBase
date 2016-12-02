@@ -1,0 +1,29 @@
+{% extends 'registration/base.html' %}
+{% block head %}
+
+{% block title %}Entrar{% endblock title %}
+
+{% endblock head %}
+{% block content %}
+
+{% if form.errors %}
+<div class="alert alert-danger alert-dismissible" id="form-errors">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Error!</strong> Usuario o Contraseña Incorrectos.
+</div>
+{% endif %}
+
+     <div class="modal-dialog" id="modal">
+         <div class="loginmodal-container">
+             <h1>Entra a tu cuenta</h1><br>
+             <form method="post" accept-charset="UTF-8" action="{% url 'login' %}">
+                {% csrf_token %}
+                 {{ form.as_p }}
+                 <input type="submit" id="btnSubmit" value="Entrar">
+             </form>
+             <div class="login-help">
+                 <a href="{% url 'password_reset' %}">¿Olvidaste tu Contraseña?</a>
+             </div>
+         </div>
+     </div>
+{% endblock content %}
